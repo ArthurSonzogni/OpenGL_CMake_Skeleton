@@ -60,7 +60,17 @@ class ShaderProgram
         
         // same things with attributes
         GLint attribute(const std::string& name);
-        void setAttribute(const std::string& name, GLint size, GLboolean normalized, GLsizei stride, GLuint offset, GLenum type = GL_FLOAT);
+        void setAttribute(const std::string& name, GLint size, GLsizei stride, GLuint offset,
+                GLboolean normalize,
+                GLenum type);
+
+        void setAttribute(const std::string& name, GLint size, GLsizei stride, GLuint offset,
+                GLboolean normalize);
+
+        void setAttribute(const std::string& name, GLint size, GLsizei stride, GLuint offset,
+                GLenum type);
+
+        void setAttribute(const std::string& name, GLint size, GLsizei stride, GLuint offset);
 
         // affect uniform
         void setUniform(const std::string& name, float x,float y,float z);

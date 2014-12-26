@@ -161,18 +161,37 @@ GLint ShaderProgram::attribute(const std::string& name)
     return attrib;
 }
 
-void ShaderProgram::setAttribute(const std::string& name, GLint size, GLboolean normalized, GLsizei stride, GLuint offset, GLenum type)
+void ShaderProgram::setAttribute(const std::string& name, GLint size, GLsizei stride, GLuint offset,
+    GLboolean normalize,
+    GLenum type)
 {
     GLint loc = attribute(name);
     glEnableVertexAttribArray(loc);
     glVertexAttribPointer(
-            loc,
-            size,
-            type,
-            normalized,
-            stride,
-            (void*)offset
+        loc,
+        size,
+        type,
+        normalize,
+        stride,
+        (void*)offset
 	);
+}
+
+void ShaderProgram::setAttribute(const std::string& name, GLint size, GLsizei stride, GLuint offset,
+        GLboolean normalize)
+{
+    setAttribute(name,size,stride,offset,normalize,GL_FLOAT);
+}
+
+void ShaderProgram::setAttribute(const std::string& name, GLint size, GLsizei stride, GLuint offset,
+        GLenum type)
+{
+    setAttribute(name,size,stride,offset,false,type);
+}
+
+void ShaderProgram::setAttribute(const std::string& name, GLint size, GLsizei stride, GLuint offset)
+{
+    setAttribute(name,size,stride,offset,false,GL_FLOAT);
 }
 
 
@@ -230,4 +249,9 @@ void ShaderProgram::use() const
 void ShaderProgram::unuse() const
 {
     glUseProgram(0);
+}
+
+GLuint ShaderProgram::getHandle() const
+{
+    return handle;
 }
