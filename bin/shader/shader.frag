@@ -1,4 +1,4 @@
-#version 330
+#version 130
 
 in vec4 fPosition;
 in vec4 fColor;
@@ -19,7 +19,7 @@ void main(void)
     float diffus = 0.7*max(0.0,dot(n,l));
     float specular = 0.6*pow(max(0.0,-dot(r,l)),4.0);
 
-    color = fColor * ( ambient + diffus + specular );
+    gl_FragColor = fColor * ( ambient + diffus + specular );
 
 	/*color = vec3(1,0,0);*/
 };

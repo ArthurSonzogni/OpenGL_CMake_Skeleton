@@ -45,7 +45,7 @@ Application::Application():
 
     // setting the opengl version
     int major = 3;
-    int minor = 3;
+    int minor = 0;
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, major);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, minor);
     //glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
