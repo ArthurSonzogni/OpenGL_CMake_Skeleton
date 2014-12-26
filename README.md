@@ -12,7 +12,12 @@ This project use git submodules system.
 To clone this repository you must add the --recursive option.
 * git clone git@github.com:ArthurSonzogni/OpenGL_CMake_Skeleton.git **--recursive**
 
+Alternatively, if you don't used the --recursive option, you can type:
+* git submodule init
+* git submodule update
+
 ![output result](output.png)
+
 
 Requirement:
 ============
