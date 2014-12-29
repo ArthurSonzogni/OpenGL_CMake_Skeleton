@@ -23,6 +23,10 @@ option(glew-cmake_BUILD_SHARED "" OFF)
 add_subdirectory(lib/glew)
 include_directories(lib/glew/include lib/glew/src)
 
+# glm
+include_directories(lib/glm)
+
+
 # executables
 add_executable(main ${source_files})
 target_link_libraries(main glfw ${GLFW_LIBRARIES} libglew_static)
