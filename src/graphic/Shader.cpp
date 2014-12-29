@@ -173,7 +173,7 @@ void ShaderProgram::setAttribute(const std::string& name, GLint size, GLsizei st
         type,
         normalize,
         stride,
-        (void*)offset
+        reinterpret_cast<void*>(offset)
 	);
 }
 

@@ -29,9 +29,9 @@ Application& Application::getInstance()
 
 Application::Application():
     state(stateReady),
-    title("Application"),
     width(640),
-    height(480)
+    height(480),
+    title("Application")
 {
     currentApplication=this;
 

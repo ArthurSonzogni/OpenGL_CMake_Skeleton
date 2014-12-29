@@ -7,6 +7,10 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 # c++11 activation
 list(APPEND CMAKE_CXX_FLAGS "-std=c++11")
 
+# compilation flags
+add_definitions(-Wall)
+add_definitions(-Wno-int-to-void-pointer-cast)
+
 # find every source file
 file(GLOB_RECURSE source_files ${PROJECT_SOURCE_DIR}/src/*)
 
