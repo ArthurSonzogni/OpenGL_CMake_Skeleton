@@ -1,4 +1,4 @@
-#version 130
+#version 150
 
 in vec3 position;
 in vec3 normal;
@@ -23,4 +23,4 @@ void main(void)
     gl_Position = projection * fPosition;
     /*gl_Position.x *= 1000.0f;*/
     /*gl_Position.y = 0.0;*/
-};
+}
