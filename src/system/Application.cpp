@@ -113,15 +113,15 @@ void Application::run()
     //Make the window's context current
     glfwMakeContextCurrent(window);
 
-    auto timePrevious = (float)glfwGetTime();
+    time = glfwGetTime();
 
     while( state == stateRun )
     {
 
         // compute new time and delta time
-        deltaTime = (float)glfwGetTime() - timePrevious;
-        time+=deltaTime;
-        timePrevious = (float)glfwGetTime();
+        float t = glfwGetTime();
+        deltaTime = t - time;
+        time = t;
         
         // detech window related changes
         detectWindowDimensionChange();
