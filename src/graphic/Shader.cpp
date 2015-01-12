@@ -10,6 +10,7 @@
 #include <vector>
 #include <fstream>
 #include <iostream>
+#include <cstdlib>
 #include <stdexcept>
 #include <glm/gtc/type_ptr.hpp>
 
