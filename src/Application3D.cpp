@@ -7,6 +7,8 @@
 #include <iostream>
 #include "utils/glError.hpp"
 
+#include <GLFW/glfw3.h>
+
 
 struct VertexType
 {
@@ -122,6 +124,10 @@ Application3D::Application3D():
 
 void Application3D::loop()
 {
+    // exit on window close button pressed
+    if (glfwWindowShouldClose(getWindow()))
+        exit();
+
     float t = getTime();
     // set matrix
     projection = glm::perspective(float(2.0*atan(getHeight()/1920.f)), getWindowRatio(), 0.1f, 100.f);

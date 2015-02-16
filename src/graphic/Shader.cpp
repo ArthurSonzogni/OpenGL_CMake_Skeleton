@@ -99,7 +99,7 @@ ShaderProgram::ShaderProgram()
 {
     // programme creation
     handle = glCreateProgram();
-    if (not handle)
+    if (!handle)
         throw std::runtime_error("Impossible to create a new shader program");
 }
 

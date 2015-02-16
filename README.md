@@ -24,9 +24,16 @@ Requirement:
 * C++11 compiler
 * cmake (>= 2.8)
 * OpenGL drivers (>=3.0)
+* Some standard library depending on your plateform
 
 usage (Linux) : 
 ---------------
+To build, you could need to have the following library (not exhaustive) on ubuntu :
+* libxi-dev
+* libxinerama-dev
+* libxcursor-dev
+* libglew-dev
+* libxrandr-dev
 
 Open the directory into a terminal
 * mkdir build
@@ -36,9 +43,13 @@ Open the directory into a terminal
 
 usage (Windows) :
 -----------------
-(instructions are coming soon)
+For instance :
+cmake-gui .
+-- Configure (Choose for example Visual Studio generator)
+-- Generate
+Launch the generated project in your IDE and run it.
 
 
 usage (Mac Os X) :
 ------------------
-(instructions are coming soon)
+(instructions are coming soon.. ,  (or never) )
