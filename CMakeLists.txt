@@ -1,18 +1,19 @@
+# ┌──────────────────────────────────────────────────────────────────┐
+# │  Projects Settings                                               │
+# └──────────────────────────────────────────────────────────────────┘
 cmake_minimum_required (VERSION 2.8)
 project (opengl-skeleton)
 
-# put the executable into the bin directory
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-
-# c++11 activation
+# ┌──────────────────────────────────────────────────────────────────┐
+# │  Compilation flags                                               │
+# └──────────────────────────────────────────────────────────────────┘
 list(APPEND CMAKE_CXX_FLAGS "-std=c++11")
-
-# compilation flags
 add_definitions(-Wall)
 
-# find every source file
-file(GLOB_RECURSE source_files ${PROJECT_SOURCE_DIR}/src/*)
 
+# ┌──────────────────────────────────────────────────────────────────┐
+# │  Load libraries                                                  │
+# └──────────────────────────────────────────────────────────────────┘
 # glfw
 set(GLFW_BUILD_EXAMPLES OFF CACHE STRING "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE STRING "" FORCE)
@@ -30,14 +31,9 @@ include_directories(lib/glew/include lib/glew/src)
 include_directories(lib/glm)
 
 
-# executables
+# ┌──────────────────────────────────────────────────────────────────┐
+# │  Build executable                                                │
+# └──────────────────────────────────────────────────────────────────┘
+file(GLOB_RECURSE source_files ${PROJECT_SOURCE_DIR}/src/*)
 add_executable(main ${source_files})
 target_link_libraries(main glfw ${GLFW_LIBRARIES} libglew_static)
-
-
-# 'make run' execute main into the bin directory
-add_custom_target(run
-    COMMAND ${EXECUTABLE_OUTPUT_PATH}/main
-    DEPENDS main
-    WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
-)

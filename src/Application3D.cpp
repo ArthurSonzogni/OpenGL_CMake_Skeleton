@@ -16,6 +16,8 @@
 
 #include <GLFW/glfw3.h>
 
+#define SHADER_DIR "../shader/"
+
 
 struct VertexType
 {
@@ -50,8 +52,8 @@ VertexType getHeightMap(const glm::vec2 position)
 
 Application3D::Application3D():
     Application(),
-    vertexShader("shader/shader.vert",GL_VERTEX_SHADER),
-    fragmentShader("shader/shader.frag",GL_FRAGMENT_SHADER),
+    vertexShader(SHADER_DIR"/shader.vert",GL_VERTEX_SHADER),
+    fragmentShader(SHADER_DIR"/shader.frag",GL_FRAGMENT_SHADER),
     shaderProgram({vertexShader,fragmentShader})
 {
     glCheckError(__FILE__,__LINE__);
