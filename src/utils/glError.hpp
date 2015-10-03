@@ -3,7 +3,7 @@
  * Contributors:
  *      * Arthur Sonzogni (author)
  * Licence:
- *      * Public Domain
+ *      * MIT
  */
 
 #ifndef GLERROR_J4YD6FVF

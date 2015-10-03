@@ -3,7 +3,7 @@
  * Contributors:
  *      * Arthur Sonzogni (author)
  * Licence:
- *      * Public Domain
+ *      * MIT
  */
 
 #ifndef APPLICATION_JX8NA5Y9

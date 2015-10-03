@@ -1,3 +1,10 @@
+/**
+ * Application3D.cpp
+ * Contributors:
+ *      * Arthur Sonzogni (author)
+ * Licence:
+ *      * MIT
+ */
 #include "Application3D.hpp"
 #include <vector>
 

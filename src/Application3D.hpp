@@ -1,3 +1,11 @@
+/**
+ * Application3D.hpp skeleton
+ * Contributors:
+ *      * Arthur Sonzogni
+ * Licence:
+ *      * MIT
+ */
+
 #ifndef APPLICATION3D_9YCQ0OVR
 #define APPLICATION3D_9YCQ0OVR
 

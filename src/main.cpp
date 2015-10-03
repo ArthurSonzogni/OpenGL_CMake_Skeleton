@@ -3,7 +3,7 @@
  * Contributors:
  *      * Arthur Sonzogni
  * Licence:
- *      * Public Domain
+ *      * MIT
  */
 
 #include "Application3D.hpp"
