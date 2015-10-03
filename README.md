@@ -1,4 +1,3 @@
-
 OpenGL CMake Skeleton :
 =======================
 
@@ -8,7 +7,7 @@ Shader and Application class are included too.
 git submodules :
 ================
 
-This project use git submodules system.
+This project use the git submodules system.
 To clone this repository you must add the --recursive option.
 * git clone git@github.com:ArthurSonzogni/OpenGL_CMake_Skeleton.git **--recursive**
 
@@ -24,7 +23,7 @@ Requirement:
 * C++11 compiler
 * cmake (>= 2.8)
 * OpenGL drivers (>=3.0)
-* Some standard library depending on your plateform
+* Some standard library depending on your platform
 
 usage (Linux) : 
 ---------------
@@ -39,15 +38,15 @@ Open the directory into a terminal
 * mkdir build
 * cd build
 * cmake ..
-* make run
+* ./main
 
 usage (Windows) :
 -----------------
 For instance :
-cmake-gui .
--- Configure (Choose for example Visual Studio generator)
--- Generate
-Launch the generated project in your IDE and run it.
+* cmake-gui .
+* Configure (Choose for example Visual Studio generator)
+* Generate
+Launch the generated project in your favorite IDE and run it.
 
 
 usage (Mac Os X) :
