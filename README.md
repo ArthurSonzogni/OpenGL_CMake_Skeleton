@@ -9,7 +9,9 @@ git submodules :
 
 This project use the git submodules system.
 To clone this repository you must add the --recursive option.
-* git clone git@github.com:ArthurSonzogni/OpenGL_CMake_Skeleton.git **--recursive**
+```
+git clone git@github.com:ArthurSonzogni/OpenGL_CMake_Skeleton.git --recursive
+```
 
 Alternatively, if you don't used the --recursive option, you can type:
 * git submodule init
@@ -35,10 +37,12 @@ To build, you could need to have the following library (not exhaustive) on ubunt
 * libxrandr-dev
 
 Open the directory into a terminal
-* mkdir build
-* cd build
-* cmake ..
-* ./main
+```
+mkdir build
+cd build
+cmake ..
+./main
+```
 
 usage (Windows) :
 -----------------
