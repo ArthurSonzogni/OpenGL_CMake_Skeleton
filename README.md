@@ -2,7 +2,10 @@ OpenGL CMake Skeleton :
 =======================
 
 A ready to use C++11 CMake skeleton using GLFW, Glew and glm.
+
 Shader and Application class are included too.
+
+![output result](output.gif)
 
 git submodules :
 ================
@@ -12,12 +15,9 @@ To clone this repository you must add the --recursive option.
 ```
 git clone git@github.com:ArthurSonzogni/OpenGL_CMake_Skeleton.git --recursive
 ```
-
 Alternatively, if you don't used the --recursive option, you can type:
 * git submodule init
 * git submodule update
-
-![output result](output.gif)
 
 
 Requirement:
