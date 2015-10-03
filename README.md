@@ -15,7 +15,7 @@ Alternatively, if you don't used the --recursive option, you can type:
 * git submodule init
 * git submodule update
 
-![output result](output.png)
+![output result](output.gif)
 
 
 Requirement:
