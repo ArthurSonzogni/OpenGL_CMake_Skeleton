@@ -24,7 +24,7 @@ Application& Application::getInstance()
     if (currentApplication)
         return *currentApplication;
     else
-        throw std::runtime_error("There is now current Application");
+        throw std::runtime_error("There is no current Application");
 }
 
 Application::Application():
