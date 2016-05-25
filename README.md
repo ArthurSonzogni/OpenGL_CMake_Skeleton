@@ -33,12 +33,13 @@ Requirement:
 
 usage (Linux) : 
 ---------------
-To build, you could need to have the following library (not exhaustive) on ubuntu :
+To build, you could need to install the following library (not exhaustive) on ubuntu :
 * libxi-dev
 * libxinerama-dev
 * libxcursor-dev
 * libglew-dev
 * libxrandr-dev
+* xorg-dev
 
 Open the directory into a terminal
 ```
