@@ -14,6 +14,8 @@
 #include "system/Application.hpp"
 #include "graphic/Shader.hpp"
 
+/// \class Application3D
+/// Demo : draw a 3D shape
 class Application3D : public Application
 {
     public:

@@ -13,6 +13,16 @@
 
 class GLFWwindow;
 
+/// \class Application
+/// Base class : 
+/// * init OpenGL
+/// * provide information:
+///      * getWidth()
+///      * getHeight()
+///      * getFrameDeltaTime()
+///      * getWindowRatio()
+///      * windowDimensionChange()
+/// * let the user define the "loop" function
 class Application
 {
     public:

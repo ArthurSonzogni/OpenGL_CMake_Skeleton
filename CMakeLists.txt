@@ -10,14 +10,13 @@ project (opengl-skeleton)
 list(APPEND CMAKE_CXX_FLAGS "-std=c++11")
 add_definitions(-Wall)
 
-
 # ┌──────────────────────────────────────────────────────────────────┐
 # │  Load libraries                                                  │
 # └──────────────────────────────────────────────────────────────────┘
 # glfw
 set(GLFW_BUILD_EXAMPLES OFF CACHE STRING "" FORCE)
-set(GLFW_BUILD_TESTS OFF CACHE STRING "" FORCE)
-set(GLFW_INSTALL OFF CACHE STRING "" FORCE)
+set(GLFW_BUILD_TESTS    OFF CACHE STRING "" FORCE)
+set(GLFW_INSTALL        OFF CACHE STRING "" FORCE)
 add_subdirectory(lib/glfw)
 include_directories(lib/glfw/include)
 
@@ -29,7 +28,6 @@ include_directories(lib/glew/include lib/glew/src)
 
 # glm
 include_directories(lib/glm)
-
 
 # ┌──────────────────────────────────────────────────────────────────┐
 # │  Build executable                                                │

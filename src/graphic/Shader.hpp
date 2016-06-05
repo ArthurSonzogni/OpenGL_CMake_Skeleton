@@ -40,7 +40,9 @@ class Shader
         friend class ShaderProgram;
 };
 
-
+/// \class ShaderProgram
+/// Wrap the OpenGL shaderProgram for a C++ usage.
+/// Provide overloaded operator for uniform attributes.
 class ShaderProgram
 {
     public:

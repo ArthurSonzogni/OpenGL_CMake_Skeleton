@@ -138,7 +138,7 @@ void Application3D::loop()
         exit();
 
     float t = getTime();
-    // set matrix
+    // set matrix : projection + view
     projection = glm::perspective(float(2.0*atan(getHeight()/1920.f)), getWindowRatio(), 0.1f, 100.f);
     view  = glm::lookAt(
         glm::vec3(20.0*sin(t),20.0*cos(t),20.0),
@@ -164,8 +164,6 @@ void Application3D::loop()
         glBindBuffer(GL_ARRAY_BUFFER, vbo);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
         
-        static int inc = 1;
-        inc *= 2;
         glCheckError(__FILE__,__LINE__);
             glDrawElements(
                  GL_TRIANGLES,      // mode
