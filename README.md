@@ -1,7 +1,7 @@
 OpenGL CMake Skeleton :
 =======================
 
-A ready to use C++11 CMake skeleton using **GLFW**, **Glew** and **glm**.
+A ready to use C++11 CMake skeleton using **GLFW**, **Glew** and **glm**. (use git submodules)
 
 Shader and Application class are included too.
 
