@@ -1,9 +1,10 @@
-OpenGL CMake Skeleton :
+
+OpenGL CMake Skeleton ![Travis](https://travis-ci.org/ArthurSonzogni/OpenGL_CMake_Skeleton.svg?branch=master)
 =======================
 
 A ready to use C++11 CMake skeleton using **GLFW**, **Glew** and **glm**. (use git submodules)
 
-Shader and Application class are included too.
+Shader class and example Application ar included.
 
 ![output result](output.gif)
 
@@ -27,22 +28,19 @@ Alternatively, if you don't used the --recursive option, you can type:
 Requirement:
 ============
 * C++11 compiler
-* cmake (>= 2.8)
-* OpenGL drivers (>=3.0)
+* cmake (>= 3.0)
+* OpenGL version (>=3.0)
 * Some standard library depending on your platform
 
 usage (Linux) : 
 ---------------
-To build, you could need to install the following library (not exhaustive) on ubuntu :
-* libxi-dev
-* libxinerama-dev
-* libxcursor-dev
-* libglew-dev
-* libxrandr-dev
-* xorg-dev
+Some standard library to install:
+```bash
+sudo apt-get install cmake libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev
+```
 
 Open the directory into a terminal
-```
+```bash
 mkdir build
 cd build
 cmake ..
@@ -56,8 +54,3 @@ For instance :
 * Configure (Choose for example Visual Studio generator)
 * Generate
 Launch the generated project in your favorite IDE and run it.
-
-
-usage (Mac Os X) :
-------------------
-instructions are coming soon.. ,  (or never) 

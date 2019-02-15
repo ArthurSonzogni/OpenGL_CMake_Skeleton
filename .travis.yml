@@ -1,0 +1,18 @@
+language: cpp
+compiler: clang
+sudo: false
+dist: trusty
+script:
+  - git submodule update --init --recursive
+  - mkdir build
+  - cd build
+  - cmake ..
+  - make
+addons:
+  apt:
+    packages:
+      - cmake
+      - libxrandr-dev
+      - libxinerama-dev
+      - libxcursor-dev
+      - libxi-dev

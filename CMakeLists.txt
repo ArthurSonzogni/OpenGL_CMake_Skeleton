@@ -1,37 +1,30 @@
-# ┌──────────────────────────────────────────────────────────────────┐
-# │  Projects Settings                                               │
-# └──────────────────────────────────────────────────────────────────┘
-cmake_minimum_required (VERSION 2.8)
+# Projects Settings
+cmake_minimum_required (VERSION 3.1)
 project (opengl-skeleton)
 
-# ┌──────────────────────────────────────────────────────────────────┐
-# │  Compilation flags                                               │
-# └──────────────────────────────────────────────────────────────────┘
-list(APPEND CMAKE_CXX_FLAGS "-std=c++11")
-add_definitions(-Wall)
+# The main executable
+add_executable(main
+  src/Application.cpp
+  src/Application.cpp
+  src/MyApplication.cpp
+  src/MyApplication.cpp
+  src/glError.hpp
+  src/glError.cpp
+  src/main.cpp
+  src/Shader.hpp
+  src/Shader.cpp
+)
+set_property(TARGET main PROPERTY CXX_STANDARD 11)
+target_compile_options(main PRIVATE -Wall)
 
-# ┌──────────────────────────────────────────────────────────────────┐
-# │  Load libraries                                                  │
-# └──────────────────────────────────────────────────────────────────┘
 # glfw
-set(GLFW_BUILD_EXAMPLES OFF CACHE STRING "" FORCE)
-set(GLFW_BUILD_TESTS    OFF CACHE STRING "" FORCE)
-set(GLFW_INSTALL        OFF CACHE STRING "" FORCE)
-add_subdirectory(lib/glfw)
-include_directories(lib/glfw/include)
+add_subdirectory(lib/glfw EXCLUDE_FROM_ALL)
+target_link_libraries(main PRIVATE glfw)
 
 # glew
-add_definitions(-DGLEW_STATIC)
-option(glew-cmake_BUILD_SHARED "" OFF)
-add_subdirectory(lib/glew)
-include_directories(lib/glew/include lib/glew/src)
+add_subdirectory(lib/glew EXCLUDE_FROM_ALL)
+target_link_libraries(main PRIVATE libglew_static)
 
 # glm
-include_directories(lib/glm)
-
-# ┌──────────────────────────────────────────────────────────────────┐
-# │  Build executable                                                │
-# └──────────────────────────────────────────────────────────────────┘
-file(GLOB_RECURSE source_files ${PROJECT_SOURCE_DIR}/src/*)
-add_executable(main ${source_files})
-target_link_libraries(main glfw ${GLFW_LIBRARIES} libglew_static)
+add_subdirectory(lib/glm EXCLUDE_FROM_ALL)
+target_link_libraries(main PRIVATE glm)

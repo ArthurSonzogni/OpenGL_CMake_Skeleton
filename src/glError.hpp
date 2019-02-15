@@ -6,8 +6,8 @@
  *      * MIT
  */
 
-#ifndef GLERROR_J4YD6FVF
-#define GLERROR_J4YD6FVF
+#ifndef OPENGL_CMAKE_SKELETON_GLERROR_HPP
+#define OPENGL_CMAKE_SKELETON_GLERROR_HPP
 
 // Ask Opengl for errors:
 // Result is printed on the standard output
@@ -15,5 +15,4 @@
 //      glCheckError(__FILE__,__LINE__);
 void glCheckError(const char* file, unsigned int line);
 
-#endif /* end of include guard: GLERROR_J4YD6FVF */
-
+#endif  // OPENGL_CMAKE_SKELETON_GLERROR_HPP
