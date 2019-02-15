@@ -1,29 +1,38 @@
 
-OpenGL CMake Skeleton ![Travis](https://travis-ci.org/ArthurSonzogni/OpenGL_CMake_Skeleton.svg?branch=master)
+OpenGL CMake Skeleton WebAssembly[![Build Status](https://travis-ci.org/ArthurSonzogni/OpenGL_CMake_Skeleton_WebAssembly.svg?branch=master)](https://travis-ci.org/ArthurSonzogni/OpenGL_CMake_Skeleton_WebAssembly)
 =======================
 
-A ready to use C++11 CMake skeleton using **GLFW**, **Glew** and **glm**. (use git submodules)
+A ready to use C++11 CMake OpenGL skeleton using **GLFW**, **Glew** and **glm**. (use git submodules)
 
-Shader class and example Application ar included.
+It compiles on:
+ * Linux
+ * Windows
+ * Mac
+ * (new) **WebAssembly** support on [this repository](https://github.com/ArthurSonzogni/OpenGL_CMake_Skeleton_WebAssembly)
+
+Shader class and example Application are included.
 
 ![output result](output.gif)
 
-
 I am open to any comments and contributions.
 
-
+**clone**
+```
+git clone --recursive git@github.com:ArthurSonzogni/OpenGL_CMake_Skeleton.git
+```
 git submodules :
 ================
 
 This project use the git submodules system.
 To clone this repository you must add the --recursive option.
 ```
-git clone git@github.com:ArthurSonzogni/OpenGL_CMake_Skeleton.git --recursive
+git clone --recursive git@github.com:ArthurSonzogni/OpenGL_CMake_Skeleton.git
 ```
 Alternatively, if you don't used the --recursive option, you can type:
-* git submodule init
-* git submodule update
-
+```bash
+git submodule init
+git submodule update
+```
 
 Requirement:
 ============
@@ -37,7 +46,6 @@ usage (Linux) :
 Some standard library to install:
 ```bash
 sudo apt-get install cmake libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev
-```
 
 Open the directory into a terminal
 ```bash
