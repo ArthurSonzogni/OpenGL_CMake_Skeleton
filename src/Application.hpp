@@ -72,7 +72,7 @@ class Application {
 
   std::string title;
 
-  virtual void loop();
+  virtual void loop() = 0;
 };
 
 #endif /* end of include guard: OPENGL_CMAKE_SKELETON_APPLICATION_HPP */

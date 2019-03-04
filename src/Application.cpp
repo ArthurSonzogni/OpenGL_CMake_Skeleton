@@ -10,10 +10,20 @@
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include <functional>
 #include <iostream>
 #include <stdexcept>
 
-using namespace std;
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h> 
+#include <emscripten/html5.h>
+#include <cmath>
+#endif
+
+std::function<void()> registered_loop;
+void loop_iteration() {
+	registered_loop();
+}
 
 Application* currentApplication = NULL;
 
@@ -28,7 +38,7 @@ Application::Application()
     : state(stateReady), width(640), height(480), title("Application") {
   currentApplication = this;
 
-  cout << "[Info] GLFW initialisation" << endl;
+  std::cout << "[Info] GLFW initialisation" << std::endl;
 
   // initialize the GLFW library
   if (!glfwInit()) {
@@ -36,12 +46,17 @@ Application::Application()
   }
 
   // setting the opengl version
-  int major = 3;
-  int minor = 2;
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, major);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, minor);
-  glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+#ifdef __EMSCRIPTEN__
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+#else
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+#endif
+
+	glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 
   // create the window
   window = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
@@ -57,22 +72,19 @@ Application::Application()
 
   if (err != GLEW_OK) {
     glfwTerminate();
-    throw std::runtime_error(string("Could initialize GLEW, error = ") +
+    throw std::runtime_error(std::string("Could initialize GLEW, error = ") +
                              (const char*)glewGetErrorString(err));
   }
 
   // get version info
   const GLubyte* renderer = glGetString(GL_RENDERER);
   const GLubyte* version = glGetString(GL_VERSION);
-  cout << "Renderer: " << renderer << endl;
-  cout << "OpenGL version supported " << version << endl;
+  std::cout << "Renderer: " << renderer << std::endl;
+  std::cout << "OpenGL version supported " << version << std::endl;
 
   // opengl configuration
   glEnable(GL_DEPTH_TEST);  // enable depth-testing
   glDepthFunc(GL_LESS);  // depth-testing interprets a smaller value as "closer"
-
-  // vsync
-  // glfwSwapInterval(false);
 }
 
 GLFWwindow* Application::getWindow() const {
@@ -99,13 +111,13 @@ void Application::run() {
 
   time = glfwGetTime();
 
-  while (state == stateRun) {
+	registered_loop =  [&]() {
     // compute new time and delta time
     float t = glfwGetTime();
     deltaTime = t - time;
     time = t;
 
-    // detech window related changes
+    // Detect window related changes
     detectWindowDimensionChange();
 
     // execute the frame code
@@ -116,24 +128,32 @@ void Application::run() {
 
     // Pool and process events
     glfwPollEvents();
-  }
+	};
 
+#ifdef __EMSCRIPTEN__
+  emscripten_set_main_loop(loop_iteration, 0, 1);
+#else
+  while (state == stateRun) {
+    loop_iteration();
+	}
   glfwTerminate();
+#endif
 }
 
 void Application::detectWindowDimensionChange() {
   int w, h;
+#ifdef __EMSCRIPTEN__
+  emscripten_get_canvas_element_size("canvas", &w, &h);
+#else
   glfwGetWindowSize(getWindow(), &w, &h);
+#endif
+
   dimensionChanged = (w != width or h != height);
   if (dimensionChanged) {
     width = w;
     height = h;
     glViewport(0, 0, width, height);
   }
-}
-
-void Application::loop() {
-  cout << "[INFO] : loop" << endl;
 }
 
 int Application::getWidth() {

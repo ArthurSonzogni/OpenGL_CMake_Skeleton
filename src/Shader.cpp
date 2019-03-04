@@ -18,21 +18,34 @@
 using namespace std;
 using namespace glm;
 
+const std::string shader_header = 
+#ifdef __EMSCRIPTEN__
+"#version 300 es\n"
+"precision mediump float;\n"
+"precision mediump int;\n"
+"precision mediump sampler2DArray;\n";
+#else
+"#version 330\n";
+#endif
+
 // file reading
 void getFileContents(const char* filename, vector<char>& buffer) {
   ifstream file(filename, ios_base::binary);
   if (file) {
+    // Load shader header.
+    for (const auto& c : shader_header)
+      buffer.push_back(c);
+
     file.seekg(0, ios_base::end);
     streamsize size = file.tellg();
     if (size > 0) {
       file.seekg(0, ios_base::beg);
-      buffer.resize(static_cast<size_t>(size));
-      file.read(&buffer[0], size);
+      buffer.resize(static_cast<size_t>(size + shader_header.size()));
+      file.read(&buffer[shader_header.size()], size);
     }
     buffer.push_back('\0');
   } else {
-    throw std::invalid_argument(string("The file ") + filename +
-                                " doesn't exists");
+    std::cerr << "Cannot load " << filename << std::endl;
   }
 }
 
@@ -43,8 +56,10 @@ Shader::Shader(const std::string& filename, GLenum type) {
 
   // creation
   handle = glCreateShader(type);
-  if (handle == 0)
+  if (handle == 0) {
+    std::cerr << "[Error] Impossible to create a new Shader" << std::endl;
     throw std::runtime_error("[Error] Impossible to create a new Shader");
+  }
 
   // code source assignation
   const char* shaderText(&fileContent[0]);
@@ -80,8 +95,10 @@ Shader::~Shader() {}
 
 ShaderProgram::ShaderProgram() {
   handle = glCreateProgram();
-  if (!handle)
-    throw std::runtime_error("Impossible to create a new shader program");
+  if (!handle) {
+    std::cerr << "[Error] Impossible to create a new Shader" << std::endl;
+    throw std::runtime_error("[Error] Impossible to create a new Shader");
+  }
 }
 
 ShaderProgram::ShaderProgram(std::initializer_list<Shader> shaderList)
