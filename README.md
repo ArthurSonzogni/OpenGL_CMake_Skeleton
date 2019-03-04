@@ -1,14 +1,16 @@
-
 OpenGL CMake Skeleton [![Build Status](https://travis-ci.org/ArthurSonzogni/OpenGL_CMake_Skeleton.svg?branch=master)](https://travis-ci.org/ArthurSonzogni/OpenGL_CMake_Skeleton)
 =======================
 
 A ready to use C++11 CMake OpenGL skeleton using **GLFW**, **Glew** and **glm**. (use git submodules)
 
 It compiles on:
+ * **WebAssembly**  (on branch webassembly. See instruction below)
  * Linux
  * Windows
  * Mac
- * (new) **WebAssembly** support on [this repository](https://github.com/ArthurSonzogni/OpenGL_CMake_Skeleton_WebAssembly)
+
+It can compile for the Web with WebAssembly thanks to emscripten, as well as on
+Linux, Windows and Mac.
 
 Shader class and example Application are included.
 
@@ -16,30 +18,36 @@ Shader class and example Application are included.
 
 I am open to any comments and contributions.
 
-**clone**
-```
-git clone --recursive git@github.com:ArthurSonzogni/OpenGL_CMake_Skeleton.git
-```
-git submodules :
-================
+Clone (With submodules):
+========================
 
-This project use the git submodules system.
-To clone this repository you must add the --recursive option.
 ```
 git clone --recursive git@github.com:ArthurSonzogni/OpenGL_CMake_Skeleton.git
 ```
+
 Alternatively, if you don't used the --recursive option, you can type:
 ```bash
 git submodule init
 git submodule update
 ```
 
-Requirement:
-============
-* C++11 compiler
-* cmake (>= 3.0)
-* OpenGL version (>=3.0)
-* Some standard library depending on your platform
+usage (WebAssembly) : 
+---------------------
+Switch to the webassembly branch
+```
+git checkout webassembly
+```
+
+Install emscripten, then
+```bash
+mkdir build_emscripten
+cd build_emscripten
+CC=emcc CXX=em++ cmake ..
+make
+python -m SimpleHTTPServer 8000
+```
+
+Now, visit [http://localhost:8000](http://localhost:8000)
 
 usage (Linux) : 
 ---------------
