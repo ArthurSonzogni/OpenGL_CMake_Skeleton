@@ -4,7 +4,7 @@ OpenGL CMake Skeleton [![Build Status](https://travis-ci.org/ArthurSonzogni/Open
 A ready to use C++11 CMake OpenGL skeleton using **GLFW**, **Glew** and **glm**. (use git submodules)
 
 It compiles on:
- * **WebAssembly**  (on branch webassembly. See instruction below)
+ * **WebAssembly**  (on the webassembly branch. See instruction below)
  * Linux
  * Windows
  * Mac
