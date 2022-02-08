@@ -124,7 +124,7 @@ void Application::run() {
 void Application::detectWindowDimensionChange() {
   int w, h;
   glfwGetWindowSize(getWindow(), &w, &h);
-  dimensionChanged = (w != width or h != height);
+  dimensionChanged = (w != width || h != height);
   if (dimensionChanged) {
     width = w;
     height = h;

@@ -20,7 +20,6 @@ class MyApplication : public Application {
   virtual void loop();
 
  private:
-  float time = 0.f;
   const int size = 100;
 
   // shader
