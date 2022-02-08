@@ -14,9 +14,8 @@
 #include <iostream>
 #include <vector>
 
+#include "asset.hpp"
 #include "glError.hpp"
-
-#define SHADER_DIR "../shader/"
 
 struct VertexType {
   glm::vec3 position;

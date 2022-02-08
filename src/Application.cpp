@@ -147,13 +147,10 @@ void Application::detectWindowDimensionChange() {
 #else
   glfwGetWindowSize(getWindow(), &w, &h);
 #endif
-
-  dimensionChanged = (w != width or h != height);
-  if (dimensionChanged) {
-    width = w;
-    height = h;
-    glViewport(0, 0, width, height);
-  }
+  dimensionChanged = (w != width || h != height);
+  width = w;
+  height = h;
+  glViewport(0, 0, width, height);
 }
 
 int Application::getWidth() {
