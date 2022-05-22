@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OpenGL_CMake_Skeleton</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+  </head>
+  <body>
+    <canvas id="canvas" oncontextmenu="event.preventDefault()">
+    </canvas>
+
+    <script>
+      var canvas = document.getElementById('canvas');
+
+      window.Module = {
+        preRun: [],
+        postRun: [],
+        canvas: canvas,
+        print: console.log,
+        printErr: console.error,
+      };
+    </script>
+
+    <script async src="opengl-cmake-skeleton.js"></script>
+
+    <style>
+      body {
+        background-color: black;
+      }
+    </style>
+
+  </body>
+</html>

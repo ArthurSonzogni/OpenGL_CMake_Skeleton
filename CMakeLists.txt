@@ -16,42 +16,22 @@ add_executable(opengl-cmake-skeleton
 )
 
 if (EMSCRIPTEN)
-  set_target_properties(opengl-cmake-skeleton PROPERTIES OUTPUT_NAME "main.js")
-
-  # glfw
-  #string(APPEND CMAKE_CXX_FLAGS " -s USE_GLFW=3")
-
-  string(APPEND CMAKE_CXX_FLAGS " -s DEMANGLE_SUPPORT=1")
-  string(APPEND CMAKE_CXX_FLAGS " -s DISABLE_EXCEPTION_CATCHING=2")
-  string(APPEND CMAKE_CXX_FLAGS " -s USE_GLFW=3")
-  string(APPEND CMAKE_CXX_FLAGS " -s USE_WEBGL2=1")
-  string(APPEND CMAKE_CXX_FLAGS " -s WASM=1")
-
-  # Release flags
-  #string(APPEND CMAKE_CXX_FLAGS " --closure 1")
-  #string(APPEND CMAKE_CXX_FLAGS " --js-opts 3")
-  #string(APPEND CMAKE_CXX_FLAGS " --llvm-lto 3")
-  #string(APPEND CMAKE_CXX_FLAGS " --llvm-opts 3")
-  #string(APPEND CMAKE_CXX_FLAGS " -O3")
+  target_link_libraries(opengl-cmake-skeleton PUBLIC "-s USE_GLFW=3")
+  target_link_libraries(opengl-cmake-skeleton PUBLIC "-s USE_WEBGL2=1")
+  target_link_libraries(opengl-cmake-skeleton PUBLIC "-s WASM=1")
 
   # Copy the index.html file.
-  configure_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/index.html
-    ${CMAKE_CURRENT_BINARY_DIR}/index.html
-  )
+  foreach(file "index.html" "run_webassembly.py")
+    configure_file(src/${file} ${file})
+  endforeach(file)
 
-  configure_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/style.css
-    ${CMAKE_CURRENT_BINARY_DIR}/style.css
-  )
+  foreach(file "shader/shader.frag" "shader/shader.vert")
+    configure_file(${file} ${file})
+  endforeach(file)
 
   # Allow the directories /shader and /data to be fetched by the web browser.
-  file(GLOB shader_files "./shader/*")
-  foreach(file ${shader_files})
-    file(RELATIVE_PATH relative_file ${CMAKE_SOURCE_DIR} ${file})
-    string(APPEND CMAKE_CXX_FLAGS " --preload-file ${file}@/${relative_file}")
-    message(STATUS CMAKE_CXX_FLAGS " --preload-file ${file}@/${relative_file}")
-  endforeach()
+  set_property(TARGET opengl-cmake-skeleton APPEND_STRING PROPERTY LINK_FLAGS
+    "--preload-file ${CMAKE_CURRENT_BINARY_DIR}/shader/@/shader/")
   
 else() # Not Web
 
