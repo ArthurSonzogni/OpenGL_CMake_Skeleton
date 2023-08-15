@@ -42,7 +42,7 @@ Install emscripten, then
 ```bash
 mkdir build_emscripten
 cd build_emscripten
-CC=emcc CXX=em++ cmake ..
+emcmake cmake ..
 make
 python -m SimpleHTTPServer 8000
 ```
@@ -54,7 +54,7 @@ usage (Linux) :
 Some standard library to install:
 ```bash
 sudo apt-get install cmake libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev
-
+```
 Open the directory into a terminal
 ```bash
 mkdir build
