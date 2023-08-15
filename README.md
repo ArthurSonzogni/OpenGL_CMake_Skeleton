@@ -51,16 +51,16 @@ Now, visit [http://localhost:8000](http://localhost:8000)
 
 usage (Linux) : 
 ---------------
-Some standard library to install:
+Install some standard library, fetch the project, build and run:
 ```bash
-sudo apt-get install cmake libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev
-```
-Open the directory into a terminal
-```bash
+sudo apt-get install cmake libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev
+git clone --recursive git@github.com:ArthurSonzogni/OpenGL_CMake_Skeleton.git
+cd OpenGL_CMake_Skeleton
 mkdir build
 cd build
 cmake ..
-./main
+make -j
+./opengl-cmake-skeleton
 ```
 
 usage (Windows) :
